@@ -33,5 +33,9 @@ RUN rm -rf \
   /var/tmp/* \
   && mkdir /var/cache/apk
 
-ENTRYPOINT ["vim"]
+RUN mkdir /tmp/workdir
+
+COPY entrypoint /tmp/entrypoint
+
+ENTRYPOINT ["sh", "/tmp/entrypoint"]
 
