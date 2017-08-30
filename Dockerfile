@@ -6,7 +6,15 @@ RUN apk add --update --virtual build-deps \
   build-base \
   make \
   ncurses-dev \
-  git
+  curl
+
+RUN apk add \
+  libice \
+  libsm \
+  libx11 \
+  libxt \
+  git \
+  ncurses
 
 # Build vim from sources
 RUN cd /tmp \
@@ -17,25 +25,22 @@ RUN cd /tmp/vim \
   --prefix /usr \
 
 RUN cd /tmp/vim && make install
-RUN apk del build-deps
 
-RUN apk add \
-  libice \
-  libsm \
-  libx11 \
-  libxt \
-  ncurses
+RUN mkdir /tmp/workdir
+
+COPY vimrc /root/.vimrc
+
+RUN curl -fLo /root/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+RUN vim +PlugInstall +qa
 
 # Cleanup
+RUN apk del build-deps
 RUN rm -rf \
   /var/cache/* \
   /var/log/* \
   /var/tmp/* \
   && mkdir /var/cache/apk
 
-RUN mkdir /tmp/workdir
-
-COPY entrypoint /tmp/entrypoint
-
-ENTRYPOINT ["sh", "/tmp/entrypoint"]
-
+CMD vim
