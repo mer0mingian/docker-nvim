@@ -23,6 +23,7 @@ RUN \
   git clone https://github.com/pangloss/vim-javascript & \
   git clone https://github.com/rakr/vim-one & \
   git clone https://github.com/flowtype/vim-flow & \
+  git clone https://github.com/ctrlpvim/ctrlp.vim.git & \
   wait
 
 # Clean up
