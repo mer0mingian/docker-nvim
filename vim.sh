@@ -10,6 +10,5 @@ docker run \
     --rm \
     -it \
     -v "$TARGET_PATH:/root/workdir/$TARGET_NAME" \
-    -e "TERM=xterm-256color" \
     -e "TARGET=$TARGET_NAME" \
-    soywod/vim
+    soywod/vim 
