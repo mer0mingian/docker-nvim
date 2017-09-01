@@ -9,14 +9,11 @@ ENV LC_ALL en_GB.UTF-8
 WORKDIR /root/.vim/bundle
 
 # Install packages
-RUN apk add --update \
-  curl \
-  git \
-  vim
+RUN apk add --update curl git vim
 
 # Install pathogen (vim plugin manager)
 RUN curl -LSso /root/.vim/autoload/pathogen.vim --create-dirs \
-  https://tpo.pe/pathogen.vim 
+  https://tpo.pe/pathogen.vim
 
 # Install vim plugins (async)
 RUN \

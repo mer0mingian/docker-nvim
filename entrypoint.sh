@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/bin/bash
+
+resize > /dev/null
 
 if [ -f "$TARGET" ]; then
     vim $TARGET
@@ -8,3 +10,4 @@ elif [ -d "$TARGET" ]; then
 else
     vim
 fi
+
