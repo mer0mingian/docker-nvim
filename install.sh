@@ -9,8 +9,10 @@ if [ $VIMRC_PATH == http* ]; then
     fi
 
     curl -fLo .vimrc "$VIMRC_PATH"
+
 elif [ -f "$VIMRC_PATH" ]; then
     cp "$VIMRC_PATH" .vimrc
+
 else
     echo "execute pathogen#infect()"> ~/.vimrc
     cp ~/.vimrc .
