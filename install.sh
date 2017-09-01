@@ -10,7 +10,10 @@ if [ $VIMRC_PATH == http* ]; then
 
     curl -fLo .vimrc "$VIMRC_PATH"
 elif [ -f "$VIMRC_PATH" ]; then
-    cp "$VIMRC_PATH" .
+    cp "$VIMRC_PATH" .vimrc
+else
+    echo "execute pathogen#infect()"> ~/.vimrc
+    cp ~/.vimrc .
 fi
 
 docker build -t soywod/vim .

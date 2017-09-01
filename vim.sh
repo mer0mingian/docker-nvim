@@ -11,4 +11,4 @@ docker run \
     -it \
     -v "$TARGET_PATH:/root/workdir/$TARGET_NAME" \
     -e "TARGET=$TARGET_NAME" \
-    soywod/vim 
+    soywod/vim
