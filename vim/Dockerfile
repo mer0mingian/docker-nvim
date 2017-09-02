@@ -27,7 +27,7 @@ RUN \
   rm -rf /tmp/vim
 
 COPY entrypoint.sh /tmp/entrypoint
-COPY generated/vimrc /root/.vimrc
+COPY generated/.vimrc /root/.vimrc
 COPY generated/autoload /root/.vim/autoload
 COPY generated/bundle /root/.vim/bundle
 

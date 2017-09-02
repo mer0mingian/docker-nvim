@@ -12,18 +12,13 @@ plugins=(
 
 cd /vim/bundle
 
-echo "Downloading pathogen ..."
 curl \
     --create-dirs \
     -LSso /vim/autoload/pathogen.vim \
     https://tpo.pe/pathogen.vim
 
-echo "Downloading plugins"
 for plugin in ${plugins[@]}; do
-    echo " - ${plugin} ..."
-    git clone https://github.com/${plugin} & > /dev/null
+    git clone https://github.com/${plugin} &
 done
 
 wait
-
-echo "Done !"
