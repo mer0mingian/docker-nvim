@@ -3,10 +3,10 @@
 resize > /dev/null
 
 if [ -f "$TARGET" ]; then
-    vim $TARGET
+    nvim $TARGET
 elif [ -d "$TARGET" ]; then
     cd $TARGET
-    vim
+    nvim
 else
-    vim
+    nvim
 fi

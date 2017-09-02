@@ -3,7 +3,7 @@ MAINTAINER soywod <clement.douin@gmail.com>
 
 RUN apk add --update --no-cache git curl bash
 
-WORKDIR /vim
+WORKDIR /nvim
 
 COPY entrypoint.sh /tmp/entrypoint
 

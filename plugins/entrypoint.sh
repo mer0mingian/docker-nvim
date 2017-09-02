@@ -10,11 +10,11 @@ plugins=(
     'Shougo/denite.nvim'
 )
 
-cd /vim/bundle
+cd /nvim/bundle
 
 curl \
     --create-dirs \
-    -LSso /vim/autoload/pathogen.vim \
+    -LSso /nvim/autoload/pathogen.vim \
     https://tpo.pe/pathogen.vim
 
 for plugin in ${plugins[@]}; do

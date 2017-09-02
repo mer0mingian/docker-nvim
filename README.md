@@ -1,6 +1,6 @@
-# Docker-vim
+# Docker-nvim
 
-Vim in a docker container.
+Neovim in a docker container.
 
 ## Installation
 
@@ -10,15 +10,15 @@ Vim in a docker container.
 
 Parameters :
 - `-s | --skip-plugins`: Skip the plugins install process
-- `-v | --vimrc <path>`: Path to your vimrc file. Default: ~/.vimrc
+- `-c | --config <path>`: Path to your `init.vim` file. Default: `~/.config/nvim/init.vim`
 
 ## Start
 
 ```bash
-./vim.sh <file|folder>
+./nvim.sh <file|folder>
 ```
 
 ## Plugins
 
-Edit `plugins/entrypoint.sh` and ajust the variable `plugins`.
-Each update needs a `./install.sh`.
+Edit `plugins/entrypoint.sh` and ajust the `plugins` variable.
+Any update will require a `./install.sh`.
