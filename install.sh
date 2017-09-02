@@ -2,7 +2,7 @@
 
 PROCESS_START=$(date +%s)
 VIMRC_PATH=$(realpath ~/.vimrc)
-ALL=0
+SKIP_PLUGINS=0
 
 while [[ $# -gt 0 ]]; do
     param="$1"
@@ -13,8 +13,8 @@ while [[ $# -gt 0 ]]; do
         shift
         ;;
 
-        -a|--all)
-        ALL=1
+        -s|--skip-plugins)
+        SKIP_PLUGINS=1
         ;;
 
         *)
@@ -23,7 +23,7 @@ while [[ $# -gt 0 ]]; do
     shift
 done
 
-if [ $ALL -eq 1 ]; then
+if [ $SKIP_PLUGINS -eq 0 ]; then
     sudo rm -rf vim/generated
 
     docker build \
