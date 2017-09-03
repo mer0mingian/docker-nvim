@@ -26,15 +26,13 @@ RUN \
 
 WORKDIR /root/.config/nvim/bundle
 
+COPY .plugins /tmp/plugins
+
 RUN \
-  git clone https://github.com/tpope/vim-surround & \
-  git clone https://github.com/tpope/vim-commentary & \
-  git clone https://github.com/editorconfig/editorconfig-vim & \
-  git clone https://github.com/pangloss/vim-javascript & \
-  git clone https://github.com/rakr/vim-one & \
-  git clone https://github.com/flowtype/vim-flow & \
-  git clone https://github.com/Shougo/denite.nvim & \
-  wait
+  while IFS= read -r plugin; do ( \
+    if [[ -z $plugin ]]; then continue; fi; \
+    git clone "https://github.com/$plugin"; \
+  ) done < /tmp/plugins
 
 WORKDIR /root/workdir
 

@@ -35,6 +35,10 @@ if [ ! -f "$CONFIG" ]; then
   echo "execute pathogen#infect()" > "$CONFIG"
 fi
 
+if [ ! -f .plugins ]; then
+  touch .plugins
+fi
+
 cp "$CONFIG" init.vim
 
 docker build -t "$IMAGE_NAME" .
@@ -43,3 +47,4 @@ PROCESS_TIME=$(($(date +%s) - ${PROCESS_START}))
 
 echo
 echo "Done in ${PROCESS_TIME}s"
+

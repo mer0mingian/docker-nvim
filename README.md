@@ -23,8 +23,22 @@ Params :
 
 ## Plugins
 
-Edit the `Dockerfile` and ajust the `plugins` section.
-Any update will require a `./install.sh`.
+To add plugins, create a file named `.plugins` at the root folder.
+Then add on each line the plugin name (the GitHub one).
+
+Example of a valid `.plugins` file :
+
+```text
+tpope/vim-surround
+tpope/vim-commentary
+editorconfig/editorconfig-vim
+pangloss/vim-javascript
+rakr/vim-one
+flowtype/vim-flow
+Shougo/denite.nvim
+
+...
+```
 
 ## Tips
 
