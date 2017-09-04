@@ -56,9 +56,7 @@ else
   cp "$PLUGINS_FILE" plugins
 fi
 
-echo "Building image ..."
-
-docker build -q -t "$IMAGE_NAME" .
+docker build -t "$IMAGE_NAME" .
 
 echo
 echo "Done in $(($(date +%s) - ${PROCESS_START}))s"

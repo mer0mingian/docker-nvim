@@ -2,7 +2,7 @@
 
 IMAGE_NAME="soywod/nvim"
 
-while [[ $# -gt 0 ]]; do
+while [ $# -gt 0 ]; do
   param="$1"
 
   case $param in
@@ -26,6 +26,5 @@ docker run \
   --rm \
   -it \
   -v "$TARGET_PATH:/root/workdir/$TARGET_NAME" \
-  -e "TARGET=$TARGET_NAME" \
   "$IMAGE_NAME"
 
