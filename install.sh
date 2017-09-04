@@ -67,7 +67,7 @@ sed -i '/execute pathogen#infect\(\)/d' init.vim
 sed -i '1s/^/execute pathogen#infect()\n/' init.vim
 
 if [ -z "$PLUGINS_FILE" ]; then
-  if [ ! -f .plugins ]; then
+  if [ ! -f plugins ]; then
     touch plugins
   fi
 else
