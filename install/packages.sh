@@ -5,6 +5,7 @@ PATHOGEN_URL="https://tpo.pe/pathogen.vim"
 
 apk add --update --no-cache \
   git \
+  vimdiff \
   the_silver_searcher \
   python3 \
   neovim \
