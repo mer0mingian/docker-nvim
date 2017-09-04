@@ -48,6 +48,24 @@ else
   cp "$INIT_FILE" init.vim
 fi
 
+# Remove vim-plug
+sed -i '/call plug#begin\(.*\)/,/call plug#end\(\)/d' init.vim
+
+# Remove Vundle
+sed -i '/call vundle#begin\(\)/,/call vundle#end\(\)/d' init.vim
+
+# Remove NeoBundle
+sed -i '/call neobundle#begin\(.*\)/,/call neobundle#end\(\)/d' init.vim
+
+# Remove Dein.vim
+sed -i '/call dein#begin\(.*\)/,/call dein#end\(\)/d' init.vim
+
+# Remove pathogen.vim if exists
+sed -i '/execute pathogen#infect\(\)/d' init.vim
+
+# Add pathogen.vim
+sed -i '1s/^/execute pathogen#infect()\n/' init.vim
+
 if [ -z "$PLUGINS_FILE" ]; then
   if [ ! -f .plugins ]; then
     touch plugins
