@@ -5,7 +5,7 @@ Neovim in a docker container.
 ## Installation
 
 ```bash
-./install.sh [params]
+./build.sh [params]
 ```
 
 Params :
@@ -15,12 +15,24 @@ Params :
 
 ## Start
 
+### From helper
+
 ```bash
-./nvim.sh [file|folder] [params]
+./nvim.sh target [params]
 ```
 
 Params :
 - `-n | --image-name <name>`: Docker image name. Default: `soywod/nvim`
+
+### From docker command
+
+```bash
+docker run \
+  --rm \
+  -it \
+  -v "<path/to/target>:/root/workdir/<target-name>" \
+  "<image-name>"
+```
 
 ## Plugins
 
