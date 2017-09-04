@@ -26,13 +26,14 @@ RUN \
 
 WORKDIR /root/.config/nvim/bundle
 
-COPY .plugins /tmp/plugins
+COPY plugins /tmp/plugins
 
 RUN \
-  while IFS= read -r plugin; do ( \
+  while IFS= read -r plugin; do \
     if [[ -z $plugin ]]; then continue; fi; \
-    git clone "https://github.com/$plugin"; \
-  ) done < /tmp/plugins
+    git clone "https://github.com/$plugin" & \
+  done < /tmp/plugins; \
+  wait
 
 WORKDIR /root/workdir
 

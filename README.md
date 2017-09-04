@@ -9,7 +9,8 @@ Neovim in a docker container.
 ```
 
 Params :
-- `-c | --config <path>`: Path to your `init.vim` file. Default: `~/.config/nvim/init.vim`
+- `-i | --init-file <path>`: Path to your `init.vim` file
+- `-p | --plugins-file <path>`: Path to your `plugins` file
 - `-n | --image-name <name>`: Docker image name. Default: `soywod/nvim`
 
 ## Start
@@ -23,10 +24,10 @@ Params :
 
 ## Plugins
 
-To add plugins, create a file named `.plugins` at the root folder.
+To add plugins, create a file named `plugins`, and give its path via the `-p` params to `install.sh`.
 Then add on each line the plugin name (the GitHub one).
 
-Example of a valid `.plugins` file :
+Example of a valid `plugins` file :
 
 ```text
 tpope/vim-surround
@@ -40,11 +41,13 @@ Shougo/denite.nvim
 ...
 ```
 
+Empty lines will be ignored.
+
 ## Tips
 
 - To be able to start nvim via the command `nvim`, an alias is the best:
 
 ```bash
-alias nvim='/path/to/nvim.sh -n <your-image-name>'
+alias nvim='/path/to/nvim.sh -i <init.vim> -p <plugins> -n <your-image-name>'
 ```
 

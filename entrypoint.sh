@@ -10,3 +10,4 @@ elif [ -d "$TARGET" ]; then
 else
     nvim
 fi
+

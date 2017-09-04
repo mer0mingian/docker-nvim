@@ -1,21 +1,29 @@
 #!/bin/bash
 
 PROCESS_START=$(date +%s)
-CONFIG=$(realpath ~/.config/nvim/init.vim)
 IMAGE_NAME="soywod/nvim"
 
 while [[ $# -gt 0 ]]; do
   param="$1"
 
   case $param in
-    -c|--config)
-    CONFIG=$(realpath "$2")
-
-    if [ ! -f "$CONFIG" ]; then
-      echo "Config file '$CONFIG' not found"
-      exit !
+    -i|--init-file)
+    if [ ! -f "$2" ]; then
+      echo "init.vim file not found: '$2'"
+      exit 1
     fi
 
+    INIT_FILE=$(realpath "$2")
+    shift
+    ;;
+
+    -p|--plugins-file)
+    if [ ! -f "$2" ]; then
+      echo "plugins file not found: '$2'"
+      exit 1
+    fi
+
+    PLUGINS_FILE=$(realpath "$2")
     shift
     ;;
 
@@ -25,21 +33,28 @@ while [[ $# -gt 0 ]]; do
     ;;
 
     *)
+    echo "command not found: '$1'"
+    exit 1
     ;;
   esac
   shift
 done
 
-if [ ! -f "$CONFIG" ]; then
-  mkdir -p ~/.config/nvim
-  echo "execute pathogen#infect()" > "$CONFIG"
+if [ -z "$INIT_FILE" ]; then
+  if [ ! -f init.vim ]; then
+    touch init.vim
+  fi
+else
+  cp "$INIT_FILE" init.vim
 fi
 
-if [ ! -f .plugins ]; then
-  touch .plugins
+if [ -z "$PLUGINS_FILE" ]; then
+  if [ ! -f .plugins ]; then
+    touch plugins
+  fi
+else
+  cp "$PLUGINS_FILE" plugins
 fi
-
-cp "$CONFIG" init.vim
 
 docker build -t "$IMAGE_NAME" .
 
